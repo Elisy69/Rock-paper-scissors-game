@@ -42,9 +42,14 @@ let play = (playerSelection) => {
 };
 
 let scoreCount = (outcome) => {
+  UI.RESULTS.OUTCOME.textContent = outcome;
   if (outcome === "You won!") {
+    UI.RESULTS.PLAYERSCORE.
+    //НАДО ЧТОБЫ ЗНАЧЕНИЕ СЧЕТА ЗАПИСЫВАЛОСЬ КАК ЧИСЛО В ПЕРЕМЕННУЮ
   }
 };
+
+let checkScore = (playerScore, CPUscore)
 
 UI.BUTTONS.ROCK.addEventListener("click", function (e) {
   play(e.target.dataset.selection);
@@ -59,3 +64,6 @@ UI.BUTTONS.PAPER.addEventListener("click", function (e) {
 UI.BUTTONS.SCISSORS.addEventListener("click", function (e) {
   play(e.target.dataset.selection);
 });
+
+
+checkCount(/*UI DOM OBJECTS*/);
