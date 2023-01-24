@@ -1,11 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
+    <title>Rock Paper Scissors</title>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script defer src="script.js"></script>
-    <title>Document</title>
   </head>
-  <body></body>
+
+  <body>
+    <li class="selection">
+      <button class="buttons" data-selection="rock">Rock</button>
+      <button class="buttons" data-selection="paper">Paper</button>
+      <button class="buttons" data-selection="scissors">Scissors</button>
+    </li>
+    <div class="results">
+      <h1>Result</h1>
+      <div class="winnerCount">
+        <h2 id="player">Player's score: <span data-score="player">4 </span></h2>
+        <h2 data-score="outcome">...</h2>
+        <h2 id="CPU">CPU score: <span data-score="cpu"></span>3</h2>
+      </div>
+    </div>
+    <script type="module" src="script.js"></script>
+    <script type="module" src="UI.js"></script>
+  </body>
 </html>

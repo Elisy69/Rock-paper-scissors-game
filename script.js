@@ -1,3 +1,5 @@
+import { UI } from "/UI.js";
+
 let getComputerChoice = () => {
   let number = Math.random() * 10;
   console.log(number);
@@ -12,11 +14,8 @@ let getComputerChoice = () => {
   return result;
 };
 
-let play = () => {
-  let CPUchoice = getComputerChoice();
-  let playerSelection = prompt("Rock, paper or scissors?", "");
-  let playerChoice = playerSelection.toLowerCase();
-  let outcome;
+let getGameResult = (playerChoice, CPUchoice) => {
+  let outcome = "";
   if (playerChoice === CPUchoice) {
     outcome = "Draw!";
   } else if (playerChoice === "rock" && CPUchoice === "scissors") {
@@ -32,9 +31,31 @@ let play = () => {
   } else if (playerChoice === "scissors" && CPUchoice === "rock") {
     outcome = "You lost!";
   } else outcome = "wrong imput!";
-  alert(outcome);
+  return outcome;
 };
 
-for (let i = 0; i < 5; i++) {
-  play();
-}
+let play = (playerSelection) => {
+  let CPUchoice = getComputerChoice();
+  let playerChoice = playerSelection.toLowerCase();
+  console.log(getGameResult(playerChoice, CPUchoice));
+  return getGameResult(playerChoice, CPUchoice);
+};
+
+let scoreCount = (outcome) => {
+  if (outcome === "You won!") {
+  }
+};
+
+UI.BUTTONS.ROCK.addEventListener("click", function (e) {
+  play(e.target.dataset.selection);
+  outcome = play(e.target.dataset.selection);
+  scoreCount(outcome);
+});
+
+UI.BUTTONS.PAPER.addEventListener("click", function (e) {
+  play(e.target.dataset.selection);
+});
+
+UI.BUTTONS.SCISSORS.addEventListener("click", function (e) {
+  play(e.target.dataset.selection);
+});
