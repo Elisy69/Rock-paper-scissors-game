@@ -1,5 +1,8 @@
 import { UI } from "/UI.js";
 
+let playerScore = 0;
+let CPUscore = 0;
+
 let getComputerChoice = () => {
   let number = Math.random() * 10;
   console.log(number);
@@ -37,33 +40,60 @@ let getGameResult = (playerChoice, CPUchoice) => {
 let play = (playerSelection) => {
   let CPUchoice = getComputerChoice();
   let playerChoice = playerSelection.toLowerCase();
-  console.log(getGameResult(playerChoice, CPUchoice));
   return getGameResult(playerChoice, CPUchoice);
 };
 
 let scoreCount = (outcome) => {
   UI.RESULTS.OUTCOME.textContent = outcome;
-  if (outcome === "You won!") {
-    UI.RESULTS.PLAYERSCORE.
-    //НАДО ЧТОБЫ ЗНАЧЕНИЕ СЧЕТА ЗАПИСЫВАЛОСЬ КАК ЧИСЛО В ПЕРЕМЕННУЮ
+  switch (outcome) {
+    case "You won!":
+      playerScore += 1;
+      console.log(`Player: ${playerScore}`);
+      UI.RESULTS.PLAYERSCORE.textContent = String(playerScore);
+      break;
+    case "You lost!":
+      CPUscore += 1;
+      console.log(`CPU: ${CPUscore}`);
+      UI.RESULTS.CPUSCORE.textContent = String(CPUscore);
+      break;
+    default:
+      console.log("Draw!");
   }
+  checkCount();
 };
-
-let checkScore = (playerScore, CPUscore)
 
 UI.BUTTONS.ROCK.addEventListener("click", function (e) {
   play(e.target.dataset.selection);
-  outcome = play(e.target.dataset.selection);
+  let outcome = play(e.target.dataset.selection);
   scoreCount(outcome);
 });
 
 UI.BUTTONS.PAPER.addEventListener("click", function (e) {
   play(e.target.dataset.selection);
+  let outcome = play(e.target.dataset.selection);
+  scoreCount(outcome);
 });
 
 UI.BUTTONS.SCISSORS.addEventListener("click", function (e) {
   play(e.target.dataset.selection);
+  let outcome = play(e.target.dataset.selection);
+  scoreCount(outcome);
 });
 
+function startOver() {
+  playerScore = 0;
+  CPUscore = 0;
+  UI.RESULTS.PLAYERSCORE.textContent = String(playerScore);
+  UI.RESULTS.CPUSCORE.textContent = String(CPUscore);
+  UI.RESULTS.OUTCOME.textContent = "...";
+}
 
-checkCount(/*UI DOM OBJECTS*/);
+function checkCount() {
+  if (playerScore == 5) {
+    alert("You have won the game!");
+    startOver();
+  } else if (CPUscore == 5) {
+    alert("You have lost the game!");
+    startOver();
+  } else return false;
+}

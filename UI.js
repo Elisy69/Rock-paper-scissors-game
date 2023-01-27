@@ -5,7 +5,7 @@ export const UI = {
     SCISSORS: document.querySelector("[data-selection='scissors']"),
   },
   RESULTS: {
-    PLAYERSCORE: document.querySelector("[data-score='palyer']"),
+    PLAYERSCORE: document.querySelector("[data-score='player']"),
     OUTCOME: document.querySelector("[data-score='outcome']"),
     CPUSCORE: document.querySelector("[data-score='cpu']"),
   },
